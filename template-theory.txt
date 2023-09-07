@@ -1,0 +1,7 @@
+Template
+==========================
+It is a presentation layer.
+
+stepl:create a folder template in outer project folder.
+
+step2:create a html file in that folder.
