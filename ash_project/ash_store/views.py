@@ -11,7 +11,8 @@ Syntax - render(request,'filename.html',data)
 
 def homepage(request):
 
-    return HttpResponse('Hello from Home Page')
+    #return HttpResponse('Hello from Home Page')
+    return render(request,'home.html')
 def about(request):
 
     return HttpResponse('Hi this is about me')
