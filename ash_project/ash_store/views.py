@@ -12,7 +12,9 @@ Syntax - render(request,'filename.html',data)
 def homepage(request):
 
     #return HttpResponse('Hello from Home Page')
-    return render(request,'home.html')
+    context={}
+    context['msg']="hello all,, good morning!!!"
+    return render(request,'home.html',context)
 def about(request):
 
     return HttpResponse('Hi this is about me')
