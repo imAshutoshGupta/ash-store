@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from ash_store import views
+from product_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('ash_store.urls')),
+    path('product_app/',include('product_app.urls')),
 ]

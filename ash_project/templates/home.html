@@ -8,5 +8,21 @@
 <body>
     <h1> Welcome to home page!!! </h1>
     <h4> welcome message from views.py using dictionary: {{msg}}</h4>
+    <hr>
+    <h4> Decision control instruction </h4>
+    {% if x > y %}
+        <h6> in if block </h6>
+        {{x}} is greater
+    {% else %}
+    <h6> in else block </h6>
+    {{y}} is greater
+    {% endif %}
+
+    <hr>
+    {{data}}
+    <h6> Loop control instruction </h6>
+    {% for x in data %}
+        {{x}}
+    {% endfor %}
 </body>
 </html>

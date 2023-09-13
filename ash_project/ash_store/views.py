@@ -14,6 +14,9 @@ def homepage(request):
     #return HttpResponse('Hello from Home Page')
     context={}
     context['msg']="hello all,, good morning!!!"
+    context['x']=100
+    context['y']=1000
+    context['data']=[10,20,30,40,50,60]
     return render(request,'home.html',context)
 def about(request):
 
