@@ -17,7 +17,7 @@ def homepage(request):
     context['x']=100
     context['y']=1000
     context['data']=[10,20,30,40,50,60]
-    return render(request,'home.html',context)
+    return render(request,'ashstore/home.html',context)
 def about(request):
 
     return HttpResponse('Hi this is about me')

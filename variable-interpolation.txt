@@ -1,0 +1,36 @@
+variable interpolation
+
+{{variable}} variable is a key of dictionary
+
+decision control instruction
+
+{% if condition %} #START
+
+{% endif %}  #END THE LOOP IN HTML
+
+if..else
+============
+{% if condition %}
+    if block
+{% else %}
+    else block
+{% endif %}
+
+elif
+====
+{% if condition %}
+    if block
+{% elif condition %}
+    if block
+{% elif condition %}
+    if block
+{% else %}
+    else block
+{% endif %}
+
+FOR LOOP
+========
+{% for var in key %}
+    body of for loop 
+
+{% endfor %}
