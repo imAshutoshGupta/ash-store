@@ -1,0 +1,29 @@
+#Object Relational Mapping
+
+'''
+class Classname():            id|name|price|qty|cat|is_available
+    id=
+    name=
+    price=                   EACH VALUE WILL MATCH EACH VALUE FROM ROWS
+    qty=                     THIS IS CALLED MAPPING (IT MAPS DATA FROM TABLE TO MODELS)
+    cat=
+    is_avail=
+
+
+1. Model is a class defined in models.py (class is basically table-name)
+2. classname = tablename
+3. class data members = table columnname
+4. object of model class = row in table
+
+--> When a data is added in the table it creates an object 
+--> the module imported (models) helps us to add datatype of the column
+
+====================================================
+write this in models file, then install pip install mysqlclient
+change settings.py and run
+
+then run python manage.py makemigrations 
+and run python manage.py migrate
+=====================================================
+
+'''
