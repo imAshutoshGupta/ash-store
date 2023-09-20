@@ -9,6 +9,9 @@ class Classname():            id|name|price|qty|cat|is_available
     cat=
     is_avail=
 
+row is called tuple
+column is called as attribute
+
 
 1. Model is a class defined in models.py (class is basically table-name)
 2. classname = tablename
@@ -26,4 +29,11 @@ then run python manage.py makemigrations
 and run python manage.py migrate
 =====================================================
 
+
+ORM queries
+To insert record
+syntax
+
+User Dashboard
+Its an html page or template where user gets all controls such as view data, insert, delete, edit data, filters, sorting
 '''
