@@ -56,3 +56,13 @@ def product_dashboard(request):
     '''
     context['products']=p  #using dictionary keys to access html values
     return render(request,'product_app/dashboard.html',context)
+
+
+def delete_product(request,pid):
+    #fetch object to be deleted
+    p=Product.objects.filter(id=pid)
+    print("Objects Deleted:",p)
+    #delete object
+    p.delete()
+    #redirect to dashboard
+    return redirect('/product_app/productdash')
