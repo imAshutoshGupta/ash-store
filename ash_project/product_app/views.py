@@ -68,8 +68,8 @@ def delete_product(request,pid):
     return redirect('/product_app/productdash')
 
 def update_product(request,pid):
+    p=Product.objects.filter(id=pid)
     if request.method=='GET':
-        p=Product.objects.filter(id=pid)
         # print(p)
         context={}
         context['product']=p
@@ -82,10 +82,14 @@ def update_product(request,pid):
         ucat=request.POST['cat']
         uavail=request.POST['is_avail'] #these key values are from the editproduct.html file
 
-        print(uname)
-        print(uprice)
-        print(uqty)
-        print(ucat)
-        print(uavail)
+        # print(uname)
+        # print(uprice)
+        # print(uqty)
+        # print(ucat)
+        # print(uavail)
+        # return HttpResponse("data fetched")
+        
+        p.update(name=uname,price=uprice,qty=uqty,cat=ucat,is_available=uavail) #here the keys are from models.py=views.py
+        return redirect('/product_app/productdash')
 
-        return HttpResponse("data fetched")
+        
