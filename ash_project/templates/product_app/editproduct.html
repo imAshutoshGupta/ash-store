@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekart|Add Product</title>
+</head>
+
+<body align="center">
+    <h1 align="center">Update Product</h1>
+    <hr>
+    <br><br><br>
+    {% for x in product %}
+    <form method="POST">
+        {% csrf_token %}
+        <table align="center">
+            <tr>
+                <td><strong>Product Name:</strong></td>
+                <td><input type="text" name="pname" value="{{x.name}}" id=""></td>
+            </tr>
+            <tr>
+                <td><strong>Price(Per item):</strong></td>
+                <td><input type="number" name="price" value="{{x.price}}" id=""></td>
+            </tr>
+            <tr>
+                <td><strong>Quantity:</strong></td>
+                <td><input type="number" name="qty" value="{{x.qty}}" id=""></td>
+            </tr>
+            <tr>
+                <td><strong>Category:</strong></td>
+                <td>
+                    <select name="cat" id="">
+                        {% if x.cat == 1 %}
+                        <option value="1">Mobile</option>
+                        {% elif x.cat == 2 %}
+                        <option value="2">Shoes</option>
+                        {% else %}
+                        <option value="3">Cloths</option>
+                        {% endif %}
+                        <option value="1">Mobile</option>
+                        <option value="2">Shoes</option>
+                        <option value="3">Cloths</option>
+                    </select>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td><strong>Is_available?:</strong></td>
+                <td>
+                    {% if x.is_available %}
+                    <input type="radio" value="1" name="is_avail" id="" checked> YES
+                    <input type="radio" value="0" name="is_avail" id=""> NO
+                    {% else %}
+                    <input type="radio" value="1" name="is_avail" id="" > YES
+                    <input type="radio" value="0" name="is_avail" id="" checked> NO
+                    {% endif %}
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="Update Product"></td>
+            </tr>
+        </table>
+    </form>
+    {% endfor %}
+    <hr>
+
+    <a align="center" href="/product_app/productdash"><button align="center">Go Back</button></a>
+
+</body>
+
+</html>

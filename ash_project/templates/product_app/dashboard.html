@@ -26,8 +26,22 @@
             <td>{{x.name}}</td>
             <td>{{x.price}}</td>
             <td>{{x.qty}}</td>
-            <td>{{x.cat}}</td>
-            <td>{{x.is_available}}</td>
+            <!-- <td>{{x.cat}}</td> -->
+            {% if x.cat == 1 %}
+            <td> Mobile </td>
+            {% elif x.cat == 2 %}
+            <td> Shoes </td>
+            {% else %}
+            <td> Clothes </td>
+            {% endif %}
+
+            <!-- <td>{{x.is_available}}</td> -->
+            {% if x.is_available %}
+            <td> Yes </td>
+            {% else %}
+            <td> No </td>
+            {% endif %}
+            
             <td> <a href="/product_app/edit/{{x.id}}"><button> EDIT </button></a></td>
             <td> <a href="/product_app/delete/{{x.id}}"><button> DELETE </button></a> </td>
         </tr>

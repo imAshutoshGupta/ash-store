@@ -66,3 +66,26 @@ def delete_product(request,pid):
     p.delete()
     #redirect to dashboard
     return redirect('/product_app/productdash')
+
+def update_product(request,pid):
+    if request.method=='GET':
+        p=Product.objects.filter(id=pid)
+        # print(p)
+        context={}
+        context['product']=p
+        # return HttpResponse("data fetched")
+        return render(request,'product_app/editproduct.html',context)
+    else:
+        uname=request.POST['pname']
+        uprice=request.POST['price']
+        uqty=request.POST['qty']
+        ucat=request.POST['cat']
+        uavail=request.POST['is_avail'] #these key values are from the editproduct.html file
+
+        print(uname)
+        print(uprice)
+        print(uqty)
+        print(ucat)
+        print(uavail)
+
+        return HttpResponse("data fetched")
