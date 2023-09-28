@@ -1,0 +1,16 @@
+API stands for application programming interface
+API is a program or a code that acts as a middleman between two applications to exchange data.
+
+Request by one application reaches to another application via API
+Response given by one application reaches to another application via API
+
+App1 --> API --> App2	--> is request
+App1 <-- API <-- App 2	<-- is response
+
+Request given by an application to API contains data in JSON format
+Response given by an API to the application is also in JSON format
+
+JSON
+It stands for JavaScript Object Notation
+JSON data is in the form of key and value (similar to dictionary)
+In JSON keys are always enclosed in double quotes (do not use single quote)

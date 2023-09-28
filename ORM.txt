@@ -35,5 +35,24 @@ To insert record
 syntax
 
 User Dashboard
-Its an html page or template where user gets all controls such as view data, insert, delete, edit data, filters, sorting
+Its an html page or template where user gets all controls such as view data, insert, delete, edit data, filters, sorting etc.
+
+EDIT DELETE IN ORM
+in sql we do "delete from tablename | where condition"
+in ORM we first match the id (condition) and then execute that command
+
+1) Search that row
+2) Delete it
+
+search syntax
+modelname.objects.filter(condition)
+
+delete syntax
+object.delete()
+
+
+
+
+
+
 '''
