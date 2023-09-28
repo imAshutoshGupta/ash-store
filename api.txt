@@ -14,3 +14,7 @@ JSON
 It stands for JavaScript Object Notation
 JSON data is in the form of key and value (similar to dictionary)
 In JSON keys are always enclosed in double quotes (do not use single quote)
+
+modulename:json
+json.loads()     used to convert json to dict
+json.dumps()    used to convert dict to json
