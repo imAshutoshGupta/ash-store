@@ -1,0 +1,8 @@
+Registering models in admin panel
+
+In order to access a model or a table in django admin panel it must be registered with admin
+
+
+-> How to register a model?
+1. Open admin.py from app folder.
+2. Syntax to register a model - admin.site.register(modelname)
