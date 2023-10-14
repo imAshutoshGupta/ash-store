@@ -1,0 +1,48 @@
+Django Architecture: MVT (Model View Templates)
+
+Model - it is a representative for a table in database. Model = table in database
+Template - it is a presentation layer of your application. They are html files (UI)
+Views - Business logic. View is a place where all logical operations related to application are performed.
+
+
+		    insert
+Template -----> View ------> Model
+Template	<------ View <------- Model
+		      fetch
+
+
+Request response cycle in django or Bootstrap flow
+--- image in phone----
+
+
+Views
+
+1) Function based views - in this fucntion is defined in views.py file in application folder. That function is responsible to return or provide response to client 
+def functionname(request):
+	return response object
+
+2) Class based views - in this a class is defined in views.py file in application folder. Methods defined in class are responsible to provide response to browser
+class classname(view):
+	def get( self, request):
+	       ----
+	       return response
+	def post( self, request):
+	       ----
+	       return response
+
+Passing parameter to URL
+
+URL - urls.py file in application folder
+from code maintainability pov separate urls.py must be created for each application
+
+
+Django Template Language (DTL)
+Need - Most of the content in a web application is dynamic in nature. In order to achieve dynamic content there is a need to implement programming language concept in html(html is a tagging lang not a prog language)
+DTL in django help to achieve programming language concepts.
+
+Passing data to view 
+
+Template <-------- View <------- Model
+	    data
+
+Data from view to template is always sent in the form of dictionary using render function.
