@@ -34,3 +34,7 @@ def addition(request,x,y):
     res=int(x)+int(y)
     print("addition is:",res)
     return HttpResponse("Addition is:"+str(res))
+
+
+def home(request):
+    return render(request, 'ashstore/index.html')
