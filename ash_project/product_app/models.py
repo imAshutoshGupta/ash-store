@@ -15,7 +15,7 @@ class Product(models.Model):
     qty=models.IntegerField(verbose_name='Quantity')
     cat=models.IntegerField(verbose_name='Category', choices=CAT)
     is_available=models.BooleanField(verbose_name='Availability',choices=AVAIL)
-    pdetails = models.CharField(max_length=100)
+    pdetails = models.CharField(verbose_name='Product Description',max_length=100)
 
     def __str__(self):          #string representation of the object
         #return str(self.id) #converting again to string as id is integer

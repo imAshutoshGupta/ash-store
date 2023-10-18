@@ -86,8 +86,8 @@ DATABASES = {
         'NAME': 'ekart',
         'HOST': 'localhost',
         'USER': 'root',
-        'PASSWORD': '',
-        'PORT': '3307',
+        'PASSWORD': '@Shu27488',
+       # 'PORT': '3307',
 
     }
 }
