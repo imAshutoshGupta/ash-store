@@ -8,8 +8,11 @@ urlpatterns = [
     path('edit/<id>',views.edit),
     path('delete/<id>',views.delete),
     path('addition/<x>/<y>',views.addition),
+
     path('',views.home),
     path('pdetails',views.pdetails),
+    path('contactus',views.contact_us),
     path('catfilter/<cid>',views.cat_filter),
+    
 
 ]

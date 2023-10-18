@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+<div class="row mt-2">
+
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <h3><i class="bi bi-building-check"></i> Corporate Office</h3>
+            <hr>
+            <h6>Ekart Pvt Ltd</h6>
+            <p>
+                Ishan Arcade 1, <br>
+                2nd Floor, <br>
+                Thane-West
+            </p>
+            <p><i class="bi bi-envelope-at"></i> office@ekart.com</p>
+            <p><i class="bi bi-telephone"></i>+91 9898715643</p>
+        </div>
+        <div class="col-md-6">
+            <h3><i class="bi bi-person-lines-fill"></i> Contact Form</h3>
+            <hr>
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="input1" class="form-label"><strong>Name:</strong></label>
+                    <input type="text" class="form-control" name="iname" id="input1" placeholder="Enter Name">
+                </div>
+                <div class="mb-3">
+                    <label for="input2" class="form-label"><strong>Email:</strong></label>
+                    <input type="text" class="form-control" name="iemail" id="input2" placeholder="youremail@gmail.com">
+                </div>
+                <div class="mb-3">
+                    <label for="input3" class="form-label"><strong>Mobile:</strong></label>
+                    <input type="number" class="form-control" name="ipass" id="input3"
+                        placeholder="Enter Mobile Number">
+                </div>
+                <div class="mb-3">
+                    <label for="input4" class="form-label"><strong>Feedback:</strong></label>
+                    <input type="textarea" class="form-control" name="cipass" id="input4" placeholder="Enter Feedback">
+                </div>
+                <div class="mb-3">
+                    <button type="button" class="btn btn-success">Submit</button>
+                </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <h3><i class="bi bi-geo-alt"></i> Directions </h3>
+        <hr>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d13651.068516644094!2d77.66931843889797!3d12.924959098175709!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sFlipkart%20Block%20A%2C%20WMGV%2BP2V%2C%20Devarabisanahalli%2C%20Bellandur%2C%20Bengaluru%2C%20Karnataka%20560103!5e1!3m2!1sen!2sin!4v1697665602816!5m2!1sen!2sin"
+            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    </div>
+
+</div>
+
+
+{% endblock 'main' %}
