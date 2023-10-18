@@ -9,5 +9,7 @@ urlpatterns = [
     path('delete/<id>',views.delete),
     path('addition/<x>/<y>',views.addition),
     path('',views.home),
+    path('pdetails',views.pdetails),
+    path('catfilter/<cid>',views.cat_filter),
 
 ]

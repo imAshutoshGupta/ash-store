@@ -1,4 +1,5 @@
 from django.shortcuts import render,HttpResponse
+from product_app.models import Product
 
 # Create your views here.
 '''
@@ -37,4 +38,16 @@ def addition(request,x,y):
 
 
 def home(request):
-    return render(request, 'ashstore/index.html')
+    p = Product.objects.filter(is_available = True)
+    context = {'pdata' : p}
+    return render(request, 'ashstore/index.html', context)
+
+def pdetails(request):
+    return render(request, 'ashstore/product_details.html')
+
+def cat_filter(request,cid):
+    p = Product.objects.filter(cat=cid)
+    context = {'pdata' : p}
+
+    return render(request, 'ashstore/index.html', context)
+
