@@ -27,33 +27,39 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <button type="button" class="btn btn-outline-info btn-sm">Reset</button>
+                <a href="/"><button type="submit" class="btn btn-outline-info btn-sm">Reset</button></a>
             </div>
         </div>
         <h4>Filter by Price</h4>
         <hr>
-        <form>
+        <form action="/pricerange">
             <div class="mb-3">
                 <label for="input1" class="form-label">Minimum Amount:</label>
-                <input type="number" class="form-control" name="ipass" id="input3" placeholder="Enter min amount">
+                <input type="number" class="form-control" name="min" id="min" placeholder="Enter min amount">
             </div>
             <div class="mb-3">
                 <label for="input2" class="form-label">Maximum Amount:</label>
-                <input type="number" class="form-control" name="ipass" id="input3" placeholder="Enter max amount">
+                <input type="number" class="form-control" name="max" id="max" placeholder="Enter max amount">
             </div>
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <button type="button" class="btn btn-sm btn-success">Search</button>
+                    <button type="submit" class="btn btn-sm btn-success">Search</button>
                 </div>
                 <div class="col-md-6">
-                    <button type="button" class="btn btn-sm btn-outline-info">Reset</button>
+                    <a href="/"><button type="button" class="btn btn-outline-info btn-sm">Reset</button></a>
                 </div>
+            </div>
+            <div>
+                {%  if errmsg %}
+                <div class="alert alert-danger">{{errmsg}}</div>
+                {% endif %}
             </div>
         </form>
         <h4>Sort by Price</h4>
         <hr>
-        <p><a href="#" class="anchor">From high to low</a></p>
-        <p><a href="#" class="anchor">From low to high</a></p>
+        <p><a href="/sort?q=asc" class="anchor">From low to high</a></p>
+        <p><a href="/sort?q=desc" class="anchor">From high to low</a></p>
+        
     </div>
     <div class="col-md-9">
         <h3> Products </h3>
