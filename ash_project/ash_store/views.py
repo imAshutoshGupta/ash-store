@@ -51,6 +51,13 @@ def cat_filter(request,cid):
 
     return render(request, 'ashstore/index.html', context)
 
+
+def about_us(request):
+    return render(request, 'ashstore/about.html')
+
 def contact_us(request):
     return render(request, 'ashstore/contact.html')
+
+def cart(request):
+    return render(request, 'ashstore/cart.html')
 
