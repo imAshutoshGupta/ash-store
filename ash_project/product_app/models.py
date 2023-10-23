@@ -16,6 +16,7 @@ class Product(models.Model):
     cat=models.IntegerField(verbose_name='Category', choices=CAT)
     is_available=models.BooleanField(verbose_name='Availability',choices=AVAIL)
     pdetails = models.CharField(verbose_name='Product Description',max_length=100)
+    pimage = models.ImageField(upload_to='appimage/product', verbose_name='Product Image')
 
     def __str__(self):          #string representation of the object
         #return str(self.id) #converting again to string as id is integer
