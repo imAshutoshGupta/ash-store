@@ -55,10 +55,6 @@ def home(request):
     return render(request, 'ashstore/index.html', context)
 
 
-def pdetails(request):
-    return render(request, 'ashstore/product_details.html')
-
-
 def cat_filter(request, cid):
     q1 = Q(cat=cid)
     q2 = Q(is_available=True)
@@ -70,16 +66,21 @@ def cat_filter(request, cid):
 
 def pricerange(request):
 
-    min = int(request.GET['min'])
-    max = int(request.GET['max'])
+    min = request.GET['min']
+    max = request.GET['max']
 
-    if min<0 or max<0:
+    if not min.isdigit() or not max.isdigit():
+        context = {'errmsg' : "Enter a valid amount"}
+        return render(request, 'ashstore/index.html', context)
+    if int(min)<0 or int(max)<0:
         context = {'errmsg' : "Price cannot be negative"}
         return render(request, 'ashstore/index.html', context)
-    elif min>max:
+    elif int(min)>int(max):
         context = {'errmsg' : "Minimum price cannot be greater than maximum amount"}
         return render(request, 'ashstore/index.html', context)
     else:
+        min=int(min)
+        max=int(max)
         q1 = Q(price__gte=min)
         q2 = Q(price__lte=max)
         q3 = Q(is_available=True)
@@ -109,6 +110,13 @@ def search(request):
     p = Product.objects.filter(q1 | q2)
     context = {'pdata' : p}
     return render(request, 'ashstore/index.html', context)
+
+
+def pdetails(request,pid):
+    p = Product.objects.get(id=pid)
+    context = { 'product' : p }
+    return render(request, 'ashstore/product_details.html', context)
+
 
 def about_us(request):
     return render(request, 'ashstore/about.html')

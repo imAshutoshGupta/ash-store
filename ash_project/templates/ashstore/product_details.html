@@ -7,14 +7,16 @@
         <img src="{% static 'assets/images/iphone.png' %}" alt="" width="100%">
     </div>
     <div class="col-md-5" >
-        <h4> Product Details to be given</h4>
+        <h4>{{product.name}}</h4>
         <hr>
         <h6>Offers</h6>
         <hr>
         <h6><b>About this product</b></h6>
-        <p>About this item</p>
+        <p>{{product.pdetails}}</p>
     </div>
     <div class="col-md-3">
+        <a href="/cart/{{product.id}}"><button type="button" class="btn btn-warning btn-sm"><i class="bi bi-cart-check-fill"></i>  Add to cart</button></a>
+        <button type="button" class="btn btn-primary btn-sm">Buy Now</button>
     </div>
 </div>
 

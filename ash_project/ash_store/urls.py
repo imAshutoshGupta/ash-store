@@ -10,7 +10,6 @@ urlpatterns = [
     path('addition/<x>/<y>',views.addition),
 
     path('',views.home),
-    path('pdetails',views.pdetails),
     path('aboutus',views.about_us),
     path('contactus',views.contact_us),
     path('cart',views.cart),
@@ -18,6 +17,8 @@ urlpatterns = [
     path('pricerange',views.pricerange),
     path('sort',views.sort),
     path('search',views.search),
+
+    path('pdetails/<pid>',views.pdetails),
     
 
 ]
