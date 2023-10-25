@@ -1,6 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login,logout
+
+#authenticate(): this function verifies the username and password with all the records in auth_user table in database.
+#if username and password are correct this function returns the object or row from the database table auth_user otherwise it returns None
 
 # Create your views here.
 def homepage(request):
@@ -14,10 +18,19 @@ def user_login(request):
         ipass=request.POST['ipass']
 
         if iname=='' or ipass=='':
-            context={'errmsg':"Fields cannot be empty"}
+            context={'errmsg':"Username/Email and Password cannot be blank"}
             return render(request,'accounts/login.html',context)
+        #elif iname!=username or 
         else:
-            pass
+            u=authenticate(username=iname,password=ipass)
+
+            if u is not None:
+                login(request,u)
+                return redirect('/')
+            else:
+                context={'errmsg':"invalid username or password"}
+
+                return render(request, 'accounts/login.html',context)
 
 def user_register(request):
     if request.method=="GET":
