@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from product_app.models import Product
+from ash_store.models import Cart
 from django.db.models import Q
 
 # Create your views here.
@@ -137,3 +138,14 @@ def placeorder(request):
         return render(request, 'ashstore/placeorder.html')
     else:
         return redirect('accounts/login')
+    
+def add_to_cart(request,prod_id):
+    if request.user.is_authenticated:
+
+        user_id=request.user.id
+        p_obj=Product.objects.get(id=prod_id)
+        c=Cart.objects.create(uid=request.user,pid=p_obj)
+        c.save()
+        return HttpResponse("test")
+    else:
+        return redirect('/accounts/login')

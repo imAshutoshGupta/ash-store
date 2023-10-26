@@ -26,7 +26,7 @@ def user_login(request):
             u=authenticate(username=iname,password=ipass)
 
             if u is not None:
-                login(request,u)
+                login(request,u)    #It starts session and stores objects of authenticated users in sessions.
                 return redirect('/')
             else:
                 context={'errmsg':"invalid username or password"}
