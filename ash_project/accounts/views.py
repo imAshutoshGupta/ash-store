@@ -17,6 +17,7 @@ def user_login(request):
         iname=request.POST['iname']
         ipass=request.POST['ipass']
 
+        #validation
         if iname=='' or ipass=='':
             context={'errmsg':"Username/Email and Password cannot be blank"}
             return render(request,'accounts/login.html',context)
@@ -59,3 +60,7 @@ def user_register(request):
             u.save()
             context = {'success' : "User created successfully"}
             return render(request,'accounts/register.html',context)
+        
+def user_logout(request):
+    logout(request)
+    return redirect('/')

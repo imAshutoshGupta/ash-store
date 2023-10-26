@@ -47,13 +47,20 @@
                             <!-- <li class="nav-item">
                                 <a class="nav-link" href="login.html">Login</a>
                             </li> -->
+                            {% if not user.is_authenticated %}
                             <li class="nav-item">
                                 <a class="nav-link" href="/accounts/login">Login</a>
                             </li>
+                            {% endif %}
                             <!-- <li class="nav-item">
                                 <a class="nav-link" href="logout.html">Logout</a>
                             </li> -->
                         </ul>
+                        {% if user.is_authenticated %}
+                        <div class="d-flex text-white ms-3 mx-2">
+                            Welcome, {{user.username}}!
+                        </div>
+                        {% endif %}
                         <form class="d-flex" role="search" action="/search">
                             <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-primary" type="submit">Search</button>
@@ -61,9 +68,11 @@
                         <div class="d-flex ms-3 mx-2">
                             <a class="text-white" style="text-decoration: none;" href="/cart"><i class="bi bi-cart4 h4"></i></a>
                         </div>
+                        {% if user.is_authenticated %}
                         <div class="d-flex ms-3 mx-2">
-                            <a class="text-white" style="text-decoration: none;" href="/logout"><i class="bi bi-box-arrow-in-left"></i></i></a>
-                        </div>  
+                            <a class="text-white" style="text-decoration: none;" href="/accounts/logout"><i class="bi bi-box-arrow-in-left"></i></i></a>
+                        </div>
+                        {% endif %}
                         <!-- <div class="nav-item">
                             <button class="btn btn-outline-primary" type="submit">Search</button>
                         </div> -->

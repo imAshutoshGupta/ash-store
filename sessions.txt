@@ -1,0 +1,15 @@
+Sessions:
+Sessions is a piece of information or data stored on server-side.
+Data in sessions is stored in the form of key and value i.e in python, session is in the form of dictionary.
+
+Advantage - Data stored in session can be accessed anywhere.
+            Data stored in session is secured as it is stored in server-side, hence the sensitve information such as username, password are stored in sessions.
+
+On the server-side, session data can be stored in two ways.
+1) In file
+2) In database table
+
+In django session data is stored in django_session table.
+
+-> login() function
+It starts session and stores objects of authenticated users in sessions.

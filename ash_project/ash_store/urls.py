@@ -15,6 +15,7 @@ urlpatterns = [
     path('aboutus',views.about_us),
     path('contactus',views.contact_us),
     path('cart',views.cart),
+    path('porder',views.placeorder),
     path('catfilter/<cid>',views.cat_filter),
     path('pricerange',views.pricerange),
     path('sort',views.sort),

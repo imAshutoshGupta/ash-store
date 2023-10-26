@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from product_app.models import Product
 from django.db.models import Q
 
@@ -127,4 +127,13 @@ def contact_us(request):
 
 
 def cart(request):
-    return render(request, 'ashstore/cart.html')
+    if request.user.is_authenticated:       #returns value as true or false depending upon the user is authenticated or not
+        return render(request, 'ashstore/cart.html')
+    else:
+        return redirect('accounts/login')
+    
+def placeorder(request):
+    if request.user.is_authenticated:
+        return render(request, 'ashstore/placeorder.html')
+    else:
+        return redirect('accounts/login')
