@@ -9,7 +9,7 @@
         <table class="table table-borderless">
             <tr>
                 <th>Customer Name</th>
-                <td> IT Vedant Thane</td>
+                <td> {{user.username}}</td>
             </tr>
             <tr>
                 <th> Mobile Number</th>
@@ -17,43 +17,51 @@
             </tr>
             <tr>
                 <th>Email</th>
-                <td> itvedant@gmail.com</td>
+                <td> {{user.email}}</td>
             </tr>
         </table>
         <h5 class="bg-primary text-white p-2">Order Details</h5>
+        {% for x in products %}
         <div class="row">
             <div class="col-md-3">
-                <img src="{% static 'assets/images/iphone.png' %}" width="100%" alt="">
+                <img src="{{x.pid.pimage.url}}" width="100%" alt="">
             </div>
             <div class="col-md-9 mt-4">
                 <table class="table table-borderless">
                     <tr>
                         <th>Product name</th>
-                        <td> iPhone</td>
+                        <td>{{x.pid.name}}</td>
                     </tr>
                     <tr>
                         <th> Price</th>
-                        <td> Rs.1,49,999 </td>
+                        <td>{{x.pid.price}}</td>
                     </tr>
                     <tr>
                         <th>Product Category</th>
+                        {% if x.pid.cat == 1 %}
                         <td> Mobile</td>
+                        {% elif x.pid.cat == 2 %}
+                        <td> Shoes</td>
+                        {% else %}
+                        <td> Clothes </td>
+                        {% endif %}
                     </tr>
-                    <!-- <tr> -->
-                    <!-- <th>Quantity</th> -->
-                    <!-- <td> -->
-                    <!-- <button class="btn btn-outline-danger btn-sm">-</button> -->
-                    <!-- <input type="number" name="qty"> -->
-                    <!-- <button class="btn btn-outline-success btn-sm">+</button> -->
-                    <!-- </td> -->
-                    <!-- </tr> -->
                     <tr>
-                        <td><button class="btn btn-danger"> Remove Item</button></td>
+                    <th>Quantity</th>
+                    <td>
+                    <button class="btn btn-outline-danger btn-sm">-</button>
+                    <input type="number" name="qty" value="1">
+                    <button class="btn btn-outline-success btn-sm">+</button>
+                    </td>
+                    </tr>
+                    <tr>
+                        <td><a href="/removeitem/{{x.id}}" class="href"><button class="btn btn-danger"> Remove Item</button></a></td>
                     </tr>
 
                 </table>
             </div>
         </div>
+        {% endfor %}
     </div>
     <div class="col-md-3">
         <h5 class="bg-primary text-white p-2">Order Total</h5>

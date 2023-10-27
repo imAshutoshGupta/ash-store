@@ -15,8 +15,23 @@
         <p>{{product.pdetails}}</p>
     </div>
     <div class="col-md-3">
-        <a href="/cart/{{product.id}}"><button type="button" class="btn btn-warning btn-sm"><i class="bi bi-cart-check-fill"></i>  Add to cart</button></a>
+        <a href="/cart/{{product.id}}"><button type="submit" class="btn btn-warning btn-sm"><i class="bi bi-cart-check-fill"></i>  Add to cart</button></a>
         <button type="button" class="btn btn-primary btn-sm">Buy Now</button>
+        <!-- {% if msg1 %}
+        <div class="alert alert-danger my-2">{{msg1}} <a href="/cart" class="href anchor text-info"><i class="bi bi-cart-fill"></i> View Cart</a></div>
+        {% endif %} -->
+       
+        <!-- <div class="alert alert-success my-2">{{msg2}}</div> -->
+        {% if msg1 %}
+        <div class="row alert alert-danger my-2">
+                <p>{{msg1}} <a href="/cart"><button type="submit" class="btn btn-danger btn-sm ms-3"><i class="bi bi-cart-fill bi-sm"></i> View Cart</button></a></p>
+        </div>
+        {% endif %}
+        {% if msg2 %}
+        <div class="row alert alert-success my-2">
+                <p>{{msg2}}<a href="/cart"><button type="submit" class="btn btn-danger btn-sm ms-3"><i class="bi bi-cart-fill bi-sm"></i> View Cart</button></a></p>
+        </div>
+        {% endif %}
     </div>
 </div>
 

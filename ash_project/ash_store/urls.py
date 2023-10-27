@@ -23,6 +23,7 @@ urlpatterns = [
 
     path('pdetails/<pid>',views.pdetails),
     path('cart/<prod_id>',views.add_to_cart),
+    path('removeitem/<rid>',views.remove_item),
     
 ]
 

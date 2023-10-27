@@ -129,7 +129,9 @@ def contact_us(request):
 
 def cart(request):
     if request.user.is_authenticated:       #returns value as true or false depending upon the user is authenticated or not
-        return render(request, 'ashstore/cart.html')
+        c=Cart.objects.filter(uid=request.user.id)
+        context={'products':c}
+        return render(request, 'ashstore/cart.html',context)
     else:
         return redirect('accounts/login')
     
@@ -142,10 +144,28 @@ def placeorder(request):
 def add_to_cart(request,prod_id):
     if request.user.is_authenticated:
 
-        user_id=request.user.id
+        user_id=request.user
         p_obj=Product.objects.get(id=prod_id)
-        c=Cart.objects.create(uid=request.user,pid=p_obj)
-        c.save()
-        return HttpResponse("test")
+        q1=Q(uid=user_id)
+        q2=Q(pid=prod_id)
+        
+        check=Cart.objects.filter(q1 & q2)
+        context={'product':p_obj}
+        #print(check)
+        #print(len(check))
+
+        if len(check):   #if value is true it runs if-loop and runs else-loop if its false
+            context={'msg1':"Product already exists"}
+            return render(request,'ashstore/product_details.html',context)
+        else:
+            c=Cart.objects.create(uid=request.user, pid=p_obj)
+            c.save()
+            context={'msg2':"Added successfully"}
+            return render(request,'ashstore/product_details.html',context)
     else:
         return redirect('/accounts/login')
+    
+def remove_item(request,rid):
+    c=Cart.objects.get(id=rid)
+    c.delete()
+    return redirect('/cart')
