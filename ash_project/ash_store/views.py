@@ -144,7 +144,7 @@ def cart(request):
         nos=len(c)
         context={'n':nos,'amt':total,'products':c}
         
-        print(context)
+        #print(context)
         return render(request, 'ashstore/cart.html',context)
     else:
         return redirect('accounts/login')
@@ -182,4 +182,21 @@ def remove_item(request,rid):
     return redirect('/cart')
 
 def changeqty(request,cqid):
-    pass
+    qparam=request.GET['q']
+    # print(cqid)
+    # print(qparam)
+    # return HttpResponse("data fetched")
+    c=Cart.objects.get(id=cqid)
+    #c=Cart.objects.filter(id=cqid)
+    x=c.qty
+    #x=c[0].qty
+    if qparam=='plus':
+        x=x+1
+    else:
+        if x>1:
+            x=x-1
+    
+    #update
+    Cart.objects.update(qty=x)
+    #c.update(qty=x)
+    return redirect('/cart')
