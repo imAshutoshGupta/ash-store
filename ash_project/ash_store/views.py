@@ -126,21 +126,30 @@ def about_us(request):
 def contact_us(request):
     return render(request, 'ashstore/contact.html')
 
-
-def cart(request):
-    if request.user.is_authenticated:       #returns value as true or false depending upon the user is authenticated or not
-        c=Cart.objects.filter(uid=request.user.id)
-        context={'products':c}
-        return render(request, 'ashstore/cart.html',context)
-    else:
-        return redirect('accounts/login')
     
 def placeorder(request):
     if request.user.is_authenticated:
         return render(request, 'ashstore/placeorder.html')
     else:
         return redirect('accounts/login')
+
+
+def cart(request):
+    if request.user.is_authenticated:       #returns value as true or false depending upon the user is authenticated or not
+        c=Cart.objects.filter(uid=request.user.id)
+        total=0
+        for x in c:
+            total=total+(x.pid.price*x.qty)
+
+        nos=len(c)
+        context={'n':nos,'amt':total,'products':c}
+        
+        print(context)
+        return render(request, 'ashstore/cart.html',context)
+    else:
+        return redirect('accounts/login')
     
+
 def add_to_cart(request,prod_id):
     if request.user.is_authenticated:
 
@@ -150,17 +159,19 @@ def add_to_cart(request,prod_id):
         q2=Q(pid=prod_id)
         
         check=Cart.objects.filter(q1 & q2)
-        context={'product':p_obj}
+        #context={'product':p_obj}
+        # context={}
+        # context['product']=p_obj
         #print(check)
         #print(len(check))
-
+        
         if len(check):   #if value is true it runs if-loop and runs else-loop if its false
-            context={'msg1':"Product already exists"}
+            context={'msg1':"Product already exists", 'product':p_obj}
             return render(request,'ashstore/product_details.html',context)
         else:
             c=Cart.objects.create(uid=request.user, pid=p_obj)
             c.save()
-            context={'msg2':"Added successfully"}
+            context={'msg2':"Added successfully", 'product':p_obj}
             return render(request,'ashstore/product_details.html',context)
     else:
         return redirect('/accounts/login')
@@ -169,3 +180,6 @@ def remove_item(request,rid):
     c=Cart.objects.get(id=rid)
     c.delete()
     return redirect('/cart')
+
+def changeqty(request,cqid):
+    pass

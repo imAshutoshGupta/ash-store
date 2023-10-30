@@ -4,6 +4,7 @@
 
 <div class="row mt-5">
     <div class="col-md-4" >
+       
         <img src="{{product.pimage.url}}" alt="" width="100%" height="350px">
     </div>
     <div class="col-md-5" >
@@ -13,6 +14,7 @@
         <hr>
         <h6><b>About this product</b></h6>
         <p>{{product.pdetails}}</p>
+        {{product}}
     </div>
     <div class="col-md-3">
         <a href="/cart/{{product.id}}"><button type="submit" class="btn btn-warning btn-sm"><i class="bi bi-cart-check-fill"></i>  Add to cart</button></a>
