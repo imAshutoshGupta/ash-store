@@ -8,6 +8,7 @@ class Cart(models.Model):
     qty=models.IntegerField(default=1)
 
 class Order(models.Model):
+    order_id=models.CharField(max_length=50)
     uid=models.ForeignKey(User,on_delete=models.CASCADE,db_column='uid')
     pid=models.ForeignKey(Product,on_delete=models.CASCADE,db_column='pid')
     qty=models.IntegerField(default=1)

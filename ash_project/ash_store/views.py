@@ -1,7 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect
 from product_app.models import Product
-from ash_store.models import Cart
+from ash_store.models import Cart,Order
 from django.db.models import Q
+import random
 
 # Create your views here.
 '''
@@ -126,13 +127,6 @@ def about_us(request):
 def contact_us(request):
     return render(request, 'ashstore/contact.html')
 
-    
-def placeorder(request):
-    if request.user.is_authenticated:
-        return render(request, 'ashstore/placeorder.html')
-    else:
-        return redirect('accounts/login')
-
 
 def cart(request):
     if request.user.is_authenticated:       #returns value as true or false depending upon the user is authenticated or not
@@ -200,3 +194,33 @@ def changeqty(request,cqid):
     Cart.objects.update(qty=x)
     #c.update(qty=x)
     return redirect('/cart')
+
+def generate_orderid():
+    n=random.randrange(1000,99999)
+    order_id='EK'+str(n)
+    o=Order.objects.filter(order_id=order_id)
+    if len(o)==0:
+        return order_id
+    else:
+        generate_orderid()
+
+def placeorder(request):
+    if request.user.is_authenticated:
+        oid=generate_orderid()
+        c=Cart.objects.filter(uid=request.user.id)
+        for x in c:
+            o=Order.objects.create(order_id=oid,uid=x.uid,pid=x.pid,qty=x.qty)
+            o.save()
+            x.delete()
+
+        o=Order.objects.filter(uid=request.user.id)
+        nos=len(o)
+        total=0
+        for x in o:
+            total=total+(x.pid.price*x.qty)
+
+        context={'orders':o,'n':nos,'amt':total}
+
+        return render(request,'ashstore/placeorder.html',context)
+    else:
+        return redirect('accounts/login')
