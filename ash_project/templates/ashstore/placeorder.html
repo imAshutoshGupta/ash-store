@@ -87,9 +87,11 @@
             <tr>
                 <td class="text-center"><button class="btn btn-warning">Make Payment</button></td>
             </tr>
+            {% for x in cancel %}
             <tr>
-                <td class="text-center"><a href="/cancelorder/{{orders.order_id}}" class="href"><button class="btn btn-danger">Cancel Order</button></a></td>
+                <td class="text-center"><a href="/cancelorder/{{x.id}}" class="href"><button class="btn btn-danger">Cancel Order</button></a></td>
             </tr>
+            {% endfor %}
         </table>
     </div>
 </div>

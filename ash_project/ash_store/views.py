@@ -236,4 +236,7 @@ def cancel_order(request,cid):
     o=Order.objects.filter(order_id=cid)
     print(o)
     o.delete()
-    return render(request,'ashstore/placeorder.html')
+    o=Order.objects.filter(order_id=request.user.id)
+    print(o)
+    context={'cancel':o}
+    return render(request,'ashstore/placeorder.html',context)
