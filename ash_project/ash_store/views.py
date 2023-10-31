@@ -224,3 +224,16 @@ def placeorder(request):
         return render(request,'ashstore/placeorder.html',context)
     else:
         return redirect('accounts/login')
+
+def remove_item(request,rid):
+    r=Order.objects.get(id=rid)
+    r.delete()
+    o=Order.objects.filter(uid=request.user.id)
+    context={'orders':o}
+    return render(request,'ashstore/placeorder.html',context)
+
+def cancel_order(request,cid):
+    o=Order.objects.filter(order_id=cid)
+    print(o)
+    o.delete()
+    return render(request,'ashstore/placeorder.html')

@@ -63,9 +63,9 @@
 
                     </tr>
 
-                    <!-- <tr>
-                        <td><button class="btn btn-danger">Remove</button></td>
-                    </tr> -->
+                    <tr>
+                        <td><a href="/cancelitem/{{x.id}}" class="href"><button class="btn btn-danger"> Remove Item</button></a></td>
+                    </tr>
 
                 </table>
             </div>
@@ -88,7 +88,7 @@
                 <td class="text-center"><button class="btn btn-warning">Make Payment</button></td>
             </tr>
             <tr>
-                <td class="text-center"><button class="btn btn-danger">Cancel Order</button></td>
+                <td class="text-center"><a href="/cancelorder/{{orders.order_id}}" class="href"><button class="btn btn-danger">Cancel Order</button></a></td>
             </tr>
         </table>
     </div>
