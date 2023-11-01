@@ -28,6 +28,8 @@ urlpatterns = [
     path('cancelitem/<rid>',views.remove_item),
     path('cancelorder/<cid>',views.cancel_order),
     
+    path('makepayment',views.make_payment),
+    
 ]
 
 if settings.DEBUG:

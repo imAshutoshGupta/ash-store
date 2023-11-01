@@ -3,6 +3,7 @@ from product_app.models import Product
 from ash_store.models import Cart,Order
 from django.db.models import Q
 import random
+import razorpay
 
 # Create your views here.
 '''
@@ -180,10 +181,10 @@ def changeqty(request,cqid):
     # print(cqid)
     # print(qparam)
     # return HttpResponse("data fetched")
-    c=Cart.objects.get(id=cqid)
-    #c=Cart.objects.filter(id=cqid)
-    x=c.qty
-    #x=c[0].qty
+    #c=Cart.objects.get(id=cqid)
+    c=Cart.objects.filter(id=cqid)
+    #x=c.qty
+    x=c[0].qty
     if qparam=='plus':
         x=x+1
     else:
@@ -191,8 +192,8 @@ def changeqty(request,cqid):
             x=x-1
     
     #update
-    Cart.objects.update(qty=x)
-    #c.update(qty=x)
+    #Cart.objects.update(qty=x)
+    c.update(qty=x)
     return redirect('/cart')
 
 def generate_orderid():
@@ -240,3 +241,17 @@ def cancel_order(request,cid):
     print(o)
     context={'cancel':o}
     return render(request,'ashstore/placeorder.html',context)
+
+def make_payment(request):
+    client = razorpay.Client(auth=("rzp_test_TIuNGEx0FWwCh0","iSZhH8nUTH0zS7JjFsjRBdDB"))
+    print(client)
+    o=Order.objects.filter(uid=request.user.id)
+    total=0
+    for x in o:
+        total=total+(x.pid.price*x.qty)
+    final_amt=total*100
+    data={"amount": final_amt, "currency": "INR", "receipt": o[0].order_id}
+    payment = client.order.create(data=data)
+    print(payment)
+    context = {'payment':payment}
+    return render(request,'ashstore/pay.html',context)
